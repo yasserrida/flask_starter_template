@@ -14,8 +14,6 @@ from apispec.ext.marshmallow import MarshmallowPlugin
 from dotenv import load_dotenv
 import app.config as conf
 
-# from flask_jwt_extended import JWTManager
-
 
 load_dotenv(dotenv_path=f"{os.getcwd()}/.env")  # development - testing - production
 MODE = os.environ.get("MODE") or "development"
@@ -40,8 +38,7 @@ app.config.update(
 
 # ------ Init Modules
 CORS(app, resources={r"/": {"origins": "localhost:*"}})
-# JWT = JWTManager(app)
-DB = PyMongo(app).db
+MONGO_DB = PyMongo(app).db
 DOCS = FlaskApiSpec(app)
 BABEL = Babel(app, locale_selector="en", timezone_selector="UTC+1")
 API = Api(app)

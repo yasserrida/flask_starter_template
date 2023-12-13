@@ -1,3 +1,5 @@
+""" User tests """
+
 import json
 from app import app
 

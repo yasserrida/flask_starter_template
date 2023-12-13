@@ -1,8 +1,10 @@
+""" User Controller """
+
 from flask import Blueprint, request, jsonify
 from bson.json_util import dumps
 from flask_apispec import doc, use_kwargs, marshal_with
 from app.models.user import User, UserSchema, DefaultResponseSchema
-from app import app, DB, DOCS
+from app import app, MONGO_DB as DB, DOCS
 
 
 users_bp = Blueprint(
@@ -24,7 +26,7 @@ def index():
 
 
 @users_bp.route("", methods=["POST"], provide_automatic_options=False)
-@doc(description="Insert User", tags=["Users"])
+@doc(description="Create User", tags=["Users"])
 @use_kwargs(UserSchema, location="json")
 @marshal_with(DefaultResponseSchema())
 def store(**kwargs):

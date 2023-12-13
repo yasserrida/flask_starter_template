@@ -1,3 +1,5 @@
+""" Files Controller """
+
 import os
 from flask import Blueprint, request, jsonify
 from flask_apispec import doc, marshal_with
@@ -24,16 +26,19 @@ def upload_file():
         # --------- One file upload
         if request.files["file"]:
             file = request.files["file"]
-            file.save(f"{os.getcwd()}/uploads/{secure_filename(str(file.filename))}")  # type: ignore
+            # type: ignore
+            file.save(
+                f"{os.getcwd()}/uploads/{secure_filename(str(file.filename))}")
             return jsonify({"message": "File Uploaded"})
         # -------- Multiple files upload
-        elif request.files["files"]:
+        if request.files["files"]:
             files = request.files["files"]
             for file in files:
-                file.save(f"{os.getcwd()}/uploads/{secure_filename(str(file.filename))}")  # type: ignore
+                # type: ignore
+                file.save(
+                    f"{os.getcwd()}/uploads/{secure_filename(str(file.filename))}")
             return jsonify({"message": "Files Uploaded"})
-        else:
-            return jsonify({"message": "No file was provided"})
+        return jsonify({"message": "No file was provided"})
     except Exception:
         return jsonify({"message": "File not Uploaded"})
 

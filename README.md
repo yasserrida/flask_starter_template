@@ -1,4 +1,4 @@
-# Flask starter with MongoDB
+# Flask starter template with MongoDB and MySQL and socketIO
 
 ## Requirements
 

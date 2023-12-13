@@ -2,7 +2,7 @@
 
 from datetime import date, datetime
 from marshmallow import Schema, fields
-from app import DB, SQL_DB
+from app import MONGO_DB, SQL_DB
 
 
 class DefaultFileResponseSchema(Schema):
@@ -63,7 +63,8 @@ class User(SQL_DB.Model):
             int: age
         """
         today = date.today()
-        birth_date = datetime.strptime(self.birth_date.replace("/", "-"), "%d-%m-%Y")
+        birth_date = datetime.strptime(
+            self.birth_date.replace("/", "-"), "%d-%m-%Y")
         return (
             today.year
             - birth_date.year
@@ -76,7 +77,7 @@ class User(SQL_DB.Model):
         Returns:
             void
         """
-        DB.users.insert_one(
+        MONGO_DB.users.insert_one(
             {
                 "id": self.id,
                 "first_name": self.first_name,
@@ -93,7 +94,7 @@ class User(SQL_DB.Model):
         Returns:
             void
         """
-        DB.users.update_one(
+        MONGO_DB.users.update_one(
             {"id": self.id},
             {
                 "$set": {

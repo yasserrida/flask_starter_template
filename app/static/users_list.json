@@ -3,7 +3,7 @@
         "id": 1,
         "first_name": "test1",
         "last_name": "test1",
-        "email": "test1@nttdata.com",
+        "email": "test1@test.com",
         "password": "123456",
         "birth_date": "01/01/2000"
     },
@@ -11,7 +11,7 @@
         "id": 2,
         "first_name": "test2",
         "last_name": "test2",
-        "email": "test2@nttdata.com",
+        "email": "test2@test.com",
         "password": "123456",
         "birth_date": "01/01/2001"
     },
@@ -19,7 +19,7 @@
         "id": 3,
         "first_name": "test3",
         "last_name": "test3",
-        "email": "test3@nttdata.com",
+        "email": "test3@test.com",
         "password": "123456",
         "birth_date": "01/01/2002"
     }

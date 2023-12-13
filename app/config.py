@@ -16,7 +16,7 @@ logging.basicConfig(
 )
 
 
-class Configurations:
+class Configurations: # pylint: disable=too-few-public-methods
     """Configurations Class"""
 
     # ---------- JWT
@@ -25,7 +25,7 @@ class Configurations:
     JWT_EXPERATION_DELTA = datetime.timedelta(days=2)
 
 
-class DevelopmentConfig(Configurations):
+class DevelopmentConfig(Configurations): # pylint: disable=too-few-public-methods
     """Development Configuration Class"""
 
     DEBUG = os.environ.get("DEBUG") or True
@@ -37,7 +37,7 @@ class DevelopmentConfig(Configurations):
     )
 
 
-class TestingConfig(Configurations):
+class TestingConfig(Configurations): # pylint: disable=too-few-public-methods
     """Testing Configuration Class"""
 
     DEBUG = os.environ.get("DEBUG") or False
@@ -50,7 +50,7 @@ class TestingConfig(Configurations):
     )
 
 
-class ProductionConfig(Configurations):
+class ProductionConfig(Configurations): # pylint: disable=too-few-public-methods
     """Production Configuration Class"""
 
     DEBUG = os.environ.get("DEBUG") or False
