@@ -20,4 +20,3 @@ class ProtectedResponseSchema(Schema):
     """ProtectedResponseSchema"""
 
     message = fields.String()
-    

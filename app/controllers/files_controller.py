@@ -27,8 +27,7 @@ def upload_file():
         if request.files["file"]:
             file = request.files["file"]
             # type: ignore
-            file.save(
-                f"{os.getcwd()}/uploads/{secure_filename(str(file.filename))}")
+            file.save(f"{os.getcwd()}/uploads/{secure_filename(str(file.filename))}")
             return jsonify({"message": "File Uploaded"})
         # -------- Multiple files upload
         if request.files["files"]:
@@ -36,7 +35,8 @@ def upload_file():
             for file in files:
                 # type: ignore
                 file.save(
-                    f"{os.getcwd()}/uploads/{secure_filename(str(file.filename))}")
+                    f"{os.getcwd()}/uploads/{secure_filename(str(file.filename))}"
+                )
             return jsonify({"message": "Files Uploaded"})
         return jsonify({"message": "No file was provided"})
     except Exception:

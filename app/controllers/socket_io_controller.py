@@ -11,24 +11,21 @@ sent_messages = []
 
 @app.route("/api/flask_socketio")
 def socket():
-    """Route to render the Flask-SocketIO HTML page.
-    """
+    """Route to render the Flask-SocketIO HTML page."""
 
     return render_template("flask_socketio.html")
 
 
 @app.route("/api/messages")
 def get_sent_messages():
-    """Route to get all sent messages in JSON format.
-    """
+    """Route to get all sent messages in JSON format."""
 
     return jsonify(sent_messages)
 
 
 @socketio.on("connect")
 def handle_connect():
-    """Route to connect client.
-    """
+    """Route to connect client."""
 
     print("Client connected")
     emit("all_messages", sent_messages)
@@ -36,8 +33,7 @@ def handle_connect():
 
 @socketio.on("disconnect")
 def handle_disconnect():
-    """Route to disconnect client.
-    """
+    """Route to disconnect client."""
 
     print("Client disconnected")
     disconnect()
@@ -45,8 +41,7 @@ def handle_disconnect():
 
 @socketio.on("message")
 def handle_message(data):
-    """Route to emit data.
-    """
+    """Route to emit data."""
 
     print("Received message:", data)
     sent_messages.append(data)

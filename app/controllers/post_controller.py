@@ -24,8 +24,7 @@ def index():
     posts = Post.query.all()
     post_list = []
     for post in posts:
-        post_list.append(
-            {"id": post.id, "title": post.title, "content": post.content})
+        post_list.append({"id": post.id, "title": post.title, "content": post.content})
     return jsonify({"posts": post_list})
 
 

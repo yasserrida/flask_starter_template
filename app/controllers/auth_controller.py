@@ -15,8 +15,7 @@ jwt_auth_bp = Blueprint(
 @jwt_auth_bp.route("", methods=["GET"], provide_automatic_options=False)
 @doc(description="Get Login form", tags=["Authentication"])
 def index():
-    """index login form
-    """
+    """index login form"""
     return render_template("login.html")
 
 
@@ -35,14 +34,16 @@ def login(**kwargs):
     if not email or not password:
         return jsonify({"message": "Missing email or password"}), 400
 
-    user = DB.users.find_one(
-        {"email": email, "password": password})  # type: ignore
+    user = DB.users.find_one({"email": email, "password": password})  # type: ignore
     if not user:
         return jsonify({"message": "Invalid email or password"}), 401
 
     session["username"] = f"{user['first_name']} {user['last_name']}"
     token = jwt.encode(
-        {"user_id": user['id'], "email": user['email']}, config["development"].SECRET_KEY, algorithm="HS256")
+        {"user_id": user["id"], "email": user["email"]},
+        config["development"].SECRET_KEY,
+        algorithm="HS256",
+    )
 
     return {"access_token": token}
 
@@ -51,8 +52,7 @@ def login(**kwargs):
 @doc(description="Protected resource using JWT token", tags=["Authentication"])
 @marshal_with(ProtectedResponseSchema())
 def protected():
-    """Protected resource using JWT token
-    """
+    """Protected resource using JWT token"""
     token = request.headers.get("Authorization")
     if not token:
         return jsonify({"message": "Missing token"}), 401

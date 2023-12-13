@@ -63,8 +63,7 @@ class User(SQL_DB.Model):
             int: age
         """
         today = date.today()
-        birth_date = datetime.strptime(
-            self.birth_date.replace("/", "-"), "%d-%m-%Y")
+        birth_date = datetime.strptime(self.birth_date.replace("/", "-"), "%d-%m-%Y")
         return (
             today.year
             - birth_date.year

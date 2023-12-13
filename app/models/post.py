@@ -9,7 +9,7 @@ class PostSchema(Schema):
 
     id = fields.Int(required=True)
     title = fields.Str(required=True, nullable=False)
-    content = fields.Str(required=True,)
+    content = fields.Str(required=True, nullable=False)
 
 
 # pylint: disable=C0103

@@ -16,7 +16,7 @@ logging.basicConfig(
 )
 
 
-class Configurations: # pylint: disable=too-few-public-methods
+class Configurations:  # pylint: disable=too-few-public-methods
     """Configurations Class"""
 
     # ---------- JWT
@@ -25,32 +25,30 @@ class Configurations: # pylint: disable=too-few-public-methods
     JWT_EXPERATION_DELTA = datetime.timedelta(days=2)
 
 
-class DevelopmentConfig(Configurations): # pylint: disable=too-few-public-methods
+class DevelopmentConfig(Configurations):  # pylint: disable=too-few-public-methods
     """Development Configuration Class"""
 
     DEBUG = os.environ.get("DEBUG") or True
-    MONGO_URI = os.environ.get(
-        "MONGO_URI") or "mongodb://localhost:27017/se4idata"
+    MONGO_URI = os.environ.get("MONGO_URI") or "mongodb://localhost:27017/se4idata"
     SQLALCHEMY_DATABASE_URI = (
         os.environ.get("SQLALCHEMY_DATABASE_URI")
         or "mysql://root:root@localhost/se4idata"
     )
 
 
-class TestingConfig(Configurations): # pylint: disable=too-few-public-methods
+class TestingConfig(Configurations):  # pylint: disable=too-few-public-methods
     """Testing Configuration Class"""
 
     DEBUG = os.environ.get("DEBUG") or False
     TESTING = os.environ.get("TESTING") or True
-    MONGO_URI = os.environ.get(
-        "MONGO_URI") or "mongodb://localhost:27017/se4idata"
+    MONGO_URI = os.environ.get("MONGO_URI") or "mongodb://localhost:27017/se4idata"
     SQLALCHEMY_DATABASE_URI = (
         os.environ.get("SQLALCHEMY_DATABASE_URI")
         or "mysql://root:root@localhost:27017/se4idata"
     )
 
 
-class ProductionConfig(Configurations): # pylint: disable=too-few-public-methods
+class ProductionConfig(Configurations):  # pylint: disable=too-few-public-methods
     """Production Configuration Class"""
 
     DEBUG = os.environ.get("DEBUG") or False
